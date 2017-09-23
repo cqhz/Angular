@@ -1,0 +1,68 @@
+<div class="pushManagement" data-ng-controller="pushManagementCtrl">
+	<div class="wrapcont">
+		<div class="clearfix">
+			<div class="navBar navBar5 pull-left">	
+				<h2 class="icon5"></h2>
+				<p>推动管理 <span>Push management</span></p>
+			</div>
+			<div class="pull-right tableRight color1">
+				<div class="btntab fz-16" ng-init="tab='one'">
+					<button type="button" ng-click="tab='one'" ng-class="tab==='one'?'graybtn btn':'graybtn'">新增推送</button>
+					<button type="button" ng-click="tab='two'" ng-class="tab==='two'?'graybtn btn':'graybtn'">历史推送</button>
+				</div>
+				<div class="pushContent">
+					<div ng-show="tab==='one'">
+						<form class="formPush formTable fz-16" name="formPush">
+							<table>
+								<tr>
+									<th>推送通知标题：</th>
+									<td><input type="text" required  ng-class="{error:formPush.heading.$error.pattern && headBlur}" ng-focus="headingBlur=false" ng-blur="headingBlur=true" name="heading" ng-model="heading" maxlength="30">
+										<span class="valitips" ng-show="formPush.heading.$error.maxlength">标题不得超过30字</span></td>
+								</tr>
+								<tr>
+									<th>推送通知内容：</th>
+									<td><textarea required  ng-class="{error:formPush.head.$error.pattern && contentBlur}" ng-focus="contentBlur=false" ng-blur="contentBlur=true" name="content" ng-model="content" maxlength="180"></textarea>
+									<span class="valitips" ng-show="formPush.content.$error.maxlength">内容不得超过180字</span></td>
+								</tr>
+								<tr>
+									<th>预计推送时间：</th>
+									<td>
+										<!--<span class="pushTime" id="pushTime"></span>-->
+										<input type="text"  data-date-picker data-ng-model="$scope.startDate">
+										<span class="tips">提交推送申请，审核通过后，<br/>3个工作日内会完成推送</span>
+									</td>
+								</tr>
+								<tr>
+									<th></th>
+									<td>
+										<button class="pushbtn btn" ng-click="submit()" ng-disabled="!(formPush.heading.$valid && formPush.content.$valid &&formPush.pushtime.$valid  )">提交推送</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<div ng-show="tab==='two'">
+						<div class="tableList pushtable">
+							<table>
+								<tr>
+							        <th>编号</th>
+							        <th>标题</th>
+							        <th>内容</th>
+							        <th>时间</th>
+							        <th>状态</th>
+							    </tr>
+							    <tr ng-repeat="x in names | orderBy : 'time':true">
+							        <td>{{$index+1}}</td>
+							        <td>{{x.title}}</td>
+							        <td class="pushconcent">{{x.concent}}</td>
+							        <td>{{x.time}}</td>
+							        <td>{{x.state}}</td>
+							    </tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

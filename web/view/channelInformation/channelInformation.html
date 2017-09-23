@@ -1,0 +1,233 @@
+<div class="channelInformation" data-ng-controller="channelInformationCtrl">
+	<div class="wrapcont">
+		<div class="clearfix">
+			<div class="navBar navBar8 pull-left">	
+				<h2 class="icon8"></h2>
+				<p>渠道资料 <span>Channel information</span></p>
+			</div>
+			<div class="pull-right tableRight color1 fz-16">
+				<div ng-show="ispe==8">
+					<div ng-init="tab='one'">
+						<button type="button" ng-click="tab='one'" ng-class="tab==='one'?'graybtn btn':'graybtn'">结算资料</button>
+						<button type="button" ng-click="tab='two'" ng-class="tab==='two'?'graybtn btn':'graybtn'">渠道资料</button>
+						<button type="button" ng-click="tab='three'" ng-class="tab==='three'?'graybtn btn':'graybtn'">基本资料</button>
+					</div>
+				</div>
+				<div ng-show="ispe==-8">
+					<div ng-init="tab='two'">
+						<button type="button" ng-click="tab='two'" ng-class="tab==='two'?'graybtn btn':'graybtn'">渠道资料</button>
+						<button type="button" ng-click="tab='three'" ng-class="tab==='three'?'graybtn btn':'graybtn'">基本资料</button>
+					</div>
+				</div>
+				<div class="channelContent fz-16">
+					<div ng-show="tab==='one'">
+						<form class="formBalance formTable" name="formBalance">
+							<table>
+								<tr>
+									<th>真实姓名：</th>
+									<td>刘磊</td>
+								</tr>   
+								<tr>
+									<th>手机号：</th>
+									<td>1500000000</td>
+								</tr>
+								<tr>
+									<th>卡号：</th>
+									<td>
+										<input type="text" class="form-input" ng-class="{error:formBalance.cardnum.$error.pattern && cardnumBlur}" ng-focus="cardnumBlur=false" ng-blur="cardnumBlur=true" pattern="^[0-9]{12,19}$" required name="cardnum" ng-model="cardnum"/>
+										<span class="valitips" ng-show="formBalance.cardnum.$error.pattern">请输入12-19位数字</span>
+									</td>
+								</tr>
+								<tr>
+									<th>开户行：</th>
+									<td>
+										<input type="text" required pattern="^[\u4e00-\u9fa5]{1,}$" ng-class="{error:formBalance.bank.$error.pattern && bankBlur}" ng-focus="bankBlur=false" ng-blur="bankBlur=true" name="bank" ng-model="bank" ng-maxlength="15">
+										<span class="valitips" ng-show="formBalance.bank.$error.maxlength">开户行名称不得超过15字</span>
+									</td>
+								</tr>
+								<tr>
+									<th>所在地：</th>
+									<td>
+										<input type="text" required pattern="^[\u4e00-\u9fa5]{1,}$" ng-class="{error:formBalance.seat.$error.pattern && seatBlur}" ng-focus="seatBlur=false" ng-blur="seatBlur=true"  name="seat" ng-model="seat" ng-maxlength="30"/>
+										<span class="example">如：浙江省杭州市海创园支行</span>
+										<span class="valitips" ng-show="formBalance.seat.$error.maxlength">所在地名称不得超过30字</span>
+									</td>
+								</tr>
+								<tr>
+									<th>验证码：</th>
+									<td>
+										<input required class="valiinput" type="text"/>
+										<button class="btn valibtn" ng-disabled="codeing" ng-bind="verificationButton" ng-click="getCode()">获取验证码</button>
+									</td>
+								</tr>
+								<tr>
+									<th></th>
+									<td>
+										<button class="pushbtn btn" ng-click="submit()" ng-disabled="!(formBalance.cardnum.$valid && formBalance.bank.$valid && formBalance.seat.$valid)">确认</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<div ng-show="tab==='two'" >
+						<form class="formChannel formBalance formTable">
+							<table>
+								<tr>
+									<th>渠道名称：</th>
+									<td><span>gamecata</span></td>
+								</tr>
+								<tr>
+									<th>下载地址：</th>
+									<td>
+										<a class="link" id="locationlink"  href="http://a.app.qq.com/o/simple.jsp?pkgname=com.youximao.app">http://a.app.qq.com/o/simple.jsp?pkgname=com.youximao.app</a>
+										<button class="btn copy" ng-click="Copy('http://a.app.qq.com/o/simple.jsp?pkgname=com.youximao.app'); alertModel()" >复制</button>
+									</td>
+								</tr>
+								<tr>
+									<th>推广地址：</th>
+									<td>
+										<a class="link" id="url" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.youximao.app">http://a.app.qq.com/o/simple.jsp?pkgname=com.youximao.app</a>
+										<button  class="btn copy"  ng-click="Copy('http://a.app.qq.com/o/simple.jsp?pkgname=com.youximao.app'); alertModel()">复制</button>
+									</td>
+								</tr>
+								<tr>
+									<th>绑定公会：</th>
+									<td>
+										<input  type="text" ng-model="sociatyid" placeholder="输入公会id" required/>
+										<button class="xsbtn btn ml20" ng-click="bind()">绑定</button>
+										<span ng-show="isright">绑定后新用户首次登陆推荐该公会</span>
+										<span ng-show="nullval">绑定为空值，可以进行解绑，取消推荐该公会</span>
+										<span ng-show="changeval">绑定的公会可进行修改</span>
+									</td>
+								</tr>
+							</table>
+							<div class="bombBox" ng-show="display">
+								<p>已经成功复制到剪切板，可通过 ctrl+V粘贴</p>
+								<i ng-click="hide()"></i>
+							</div>
+							
+						</form>
+					</div>
+					<div ng-show="tab==='three'">
+						<form class="formBasedata formTable">
+							<table>
+								<tr>
+									<th>合作类型：</th>
+									<td><span>企业</span></td>
+								</tr>
+								<tr>
+									<th>真实姓名：</th>
+									<td><span>木木子</span></td>
+								</tr>
+								<tr>
+									<th>企业名称：</th>
+									<td><span>杭州宇石网络有限公司</span></td>
+								</tr>
+								<tr>
+									<th>证件照：</th>
+									<td>
+										<div class="imgList">
+											<span><img src="../upload/zhzBG1.png"/></span>
+											<span><img src="../upload/zhzBG2.png"/></span>
+											<span><img src="../upload/zhzBG3.png"/></span>
+											<span><img src="../upload/zhzBG4.png"/></span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--点击绑定-->
+	<div class="wrapcont udmodel" ng-show="binddisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 bindmodel" id="popup">
+			<div class="modeltl">
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable viewTable" name="formBalance">
+					<table>
+						<tr>
+							<th>绑定公会ID：</th>
+							<td>{{sociatyid}}</td>
+						</tr>
+						<tr>
+							<th>对应公会名称：</th>
+							<td>烈火遮天</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="confirm()">确认</button>
+		</div>
+	</div>
+	<!--点击绑定-->
+	<!--点击解绑-->
+	<div class="wrapcont udmodel" ng-show="remdisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 bindmodel" id="popup">
+			<div class="modeltl">
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable viewTable" name="formBalance">
+					<table>
+						<tr>
+							<th>绑定公会ID：</th>
+							<td>{{sociatyid}}</td>
+						</tr>
+						<tr>
+							<th>对应公会名称：</th>
+							<td>烈火遮天</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="removebind()">解绑</button>
+		</div>
+	</div>
+	<!--点击解绑-->
+	<!--点击修改-->
+	<div class="wrapcont udmodel" ng-show="changedisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 bindmodel" id="popup">
+			<div class="modeltl">
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable viewTable" name="formBalance">
+					<table>
+						<tr>
+							<th>绑定公会ID：</th>
+							<td>{{sociatyid}}</td>
+						</tr>
+						<tr>
+							<th>对应公会名称：</th>
+							<td>烈火遮天</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="changebind()">修改</button>
+		</div>
+	</div>
+	<!--点击修改-->
+	<!--无效绑定-->
+	<div class="wrapcont udmodel" ng-show="errordisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 bindmodel" id="popup">
+			<div class="modeltl">
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				请输入有效的ID
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="errconfirm()">确定</button>
+		</div>
+	</div>
+	<!--无效绑定-->
+</div>

@@ -1,0 +1,60 @@
+<div
+    class="popup"
+    data-ng-repeat="popup in popupList"
+    data-ng-class="['popup-' + popup.type, {'popup-fullScreen': popup.fullScreen,'popup-unFullScreen': !popup.fullScreen}]"
+>
+
+    <div
+        class="popup-backdrop"
+        data-ng-if="popup.hasBackdrop"
+        data-ng-click="popup.backdropFn()"
+    ></div>
+
+    <!-- content -->
+    <div class="popup-content" data-ng-class="['popup-' + popup.size]">
+
+        <!-- close -->
+        <button
+            type="button"
+            class="popup-close"
+            data-ng-click="popup.closeCallback()"
+            data-ng-if="popup.hasClose"
+        >{{popup.closeText}}</button>
+        <!-- /close -->
+
+        <!-- header -->
+        <div class="popup-header" data-ng-if="popup.hasHeader">{{popup.header}}</div>
+        <!-- /header -->
+
+        <!-- body -->
+        <div class="popup-body" data-ng-if="popup.hasBody">{{popup.body}}</div>
+        <!-- /body -->
+
+        <!-- footer -->
+        <div class="popup-footer" data-ng-if="popup.hasFooter">
+
+            <!-- cancel -->
+            <button
+                type="button"
+                data-ng-if="popup.hasCancel"
+                class="popup-cancel-btn"
+                data-ng-click="popup.cancelCallback()"
+            >{{popup.cancelText}}</button>
+            <!-- /cancel -->
+
+            <!-- confirm -->
+            <button
+                type="button"
+                data-ng-if="popup.hasConfirm"
+                class="popup-confirm-btn"
+                data-ng-click="popup.confirmCallback()"
+            >{{popup.confirmText}}</button>
+            <!-- /confirm -->
+
+        </div>
+        <!-- /footer -->
+
+    </div>
+    <!-- /content -->
+
+</div>

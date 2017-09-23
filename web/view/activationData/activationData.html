@@ -1,0 +1,51 @@
+<div class="activationDataCtrl" data-ng-controller="activationDataCtrl">
+   <div class="wrapcont">
+		<div class="clearfix">
+			<div class="navBar pull-left">	
+				<h2></h2>
+				<p>激活数据 <span>activation data</span></p>
+			</div>
+			<div class="pull-right tableRight color1">
+				<div class="tableHeader">
+					<form class="formList clearfix">
+						<div class="pull-left">
+							<p>
+								<input type="text" name="year" class="Wdate selectTime" id="year" ng-value="yeardate" ng-model="yeardate1" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy'})"})" />					
+							</p>
+							<p>
+								<input type="text" name="month" class="Wdate selectTime" id="month" ng-model="monthdate" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'MM'})" />
+							</p>
+							<button type="button" class="btn">查询</button>
+						</div>
+						<div class="pull-right">
+							<a href="#/setPlatformpageP" class="xsbtn btn">申请结算</a>
+						</div>
+					</form>
+				</div>
+				<div class="tableList">
+					<table>
+						<thead>
+							<tr>
+						        <th>日期</th>
+						        <th>激活数</th>
+						        <th>激活收益</th>
+					    	</tr>
+						</thead>
+					    <tbody>
+					    	<tr ng-repeat="x in names | orderBy : 'time':true">
+						        <td>{{x.time}}</td>
+						        <td>{{x.number}}</td>
+						        <td>{{x.income}}</td>
+					    	</tr>
+						     <tr>
+						        <td class="gather">按当月汇总</td>
+						        <td>{{retratnumber}}</td>
+						        <td>{{retratincome}}</td>
+					    	</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="header">
+	<div class="concent clearfix">
+		<div class="pull-left">
+			<h1 class="logo pull-left"><a href="#/sidebar">游戏猫</a></h1>
+			<p class="pull-left logotil fz-16">让天下玩家不再一个人游戏</p>
+		</div>
+		<div class="pull-right">
+			<p class="login color1 fz-16">
+				<span>{{name}}</span>，你好<i>|</i><a href="javascript:;">退出</a></p>
+		</div>
+	</div>
+</div>
+<!--跑马灯-->
+<div class="concent hearanimat">
+	<marquee direction="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+    <a href="#/announcePage">纤云弄巧，飞星传恨，银汉迢迢暗度。纤云弄巧，飞星传恨，银汉迢迢暗度。纤云弄巧，飞星传恨，银汉迢迢暗度。纤云弄巧，飞星传恨，银汉迢迢暗度。纤云弄巧，飞星传恨，银汉迢迢暗度。纤云弄巧，飞星传恨，银汉迢迢暗度。纤云弄巧，飞星传恨，银汉迢迢暗度。</a><br />
+    <a href="#/announcePage">金风玉露一相逢，便胜却、人间无数。</a><br />
+    <a href="#/announcePage">柔情似水，佳期如梦。忍顾鹊桥归路！</a><br />
+    <a href="#/announcePage">两情若是久长时，又岂在、朝朝暮暮。</a><br />
+    <a href="#/announcePage">千重劫，百世难，亘古匆匆，弹指间！</a><br />
+    <a href="#/announcePage">不死躯，不灭魂，震古烁今，无人敌！</a><br />
+    <a href="#/announcePage">待到阴阳逆乱时，以我魔血染青天！</a><br />
+</marquee>
+</div>
+<!--跑马灯-->
+<!-- 面包屑 -->
+<div class="concent" data-ng-show="app.isPosition">
+	<div class="nav fz-16">
+		<div class="pull-left">{{title}}</div>
+		<ul ng-hide="title==='管理首页'" class="pull-right pageNav color1">
+			<li>
+				<a href="#/sidebar">管理首页</a>
+			</li>
+			<li ng-if="title==='新增游戏'">
+				<a href="#/gameManagement">游戏管理</a>
+			</li>
+			<li>{{title}}</li>
+
+		</ul>
+	</div>
+</div>
+<!-- /面包屑 -->

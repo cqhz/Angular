@@ -1,0 +1,75 @@
+<div class="gameManagement" data-ng-controller="gameManagementCtrl">
+	<div class="wrapcont">
+		<div class="clearfix con">
+			<div class="navBar navBar3 pull-left">	
+				<h2 class="icon3"></h2>
+				<p>游戏管理 <span>Game management</span></p>
+			</div>
+			<div>
+				<div class="pull-right tableRight color1">
+					<div class="tableHeader">
+						<form class="formList clearfix">
+							<p><input class="forminput" type="text" placeholder="游戏名称"/></p>
+							<p>
+								<button type="button" class="btn">查询</button>
+							</p>
+						</form>
+					</div>
+					<div class="tableList gametable">
+						<table>
+							<tr>
+						        <th>游戏名</th>
+						        <th>ICON</th>
+						        <th>游戏类型</th>
+						        <th>添加时间</th>
+						        <th>版本</th>
+						        <th>大小</th>
+						        <th>游戏分成比例</th>
+						        <th>操作</th>
+						    </tr>
+						    <tr ng-repeat="x in names">
+						        <td>{{x.gameName}}</td>
+						        <td><img width="80" height="80" ng-src="{{x.icon}}"/></td>
+						        <td>{{x.gameType}}</td>
+						        <td>{{x.addTime}}</td>
+						        <td>{{x.versionNum}}</td>
+						        <td>{{x.size}}</td>
+						        <td>{{x.gameintoscale}}</td>
+						        <td class="operate clearfix">
+						        	<a href="http://baidu.com">下载</a>
+						        	<a href="javascript:;" ng-click="Copy('str'); alertModel()">复制链接</a>
+						        	<a href="javascript:;" ng-click="userQuery()">用户查询</a>
+						        </td>
+						    </tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<!--点击查询弹框-->
+		<div class="wrapcont udmodel" ng-show="display">
+			<div class="modelbg" ng-click="hide()"></div>
+			<div class="clearfix con udmodelct color1 usermodel" id="popup">
+				<div class="modeltl">
+					<p>用户查询</p>
+					<i ng-click="hide()"></i>
+				</div>
+				<div class="modelby">
+					<h2 class="fz-16 mb-18">用户归属渠道查询</h2>
+					<form class=" formTable formList addTable">
+						<p>
+							<input class="forminput" type="text" placeholder="喵号或手机号"/>
+							<span class="valitips" ng-show="belong">用户{{111}}在游戏{{gameName}}中属于您的渠道</span>
+							<span class="valitips" ng-show="notBelong">用户{{111}}在游戏{{gameName}}中不属于您的渠道</span>
+						</p>
+						<p>
+							<button type="button" ng-click="isBelong()" class="xsbtn btn">查询</button>
+						</p>
+					</form>   
+				</div>
+			</div>
+		</div>
+		<!--点击更新弹框-->
+</div>

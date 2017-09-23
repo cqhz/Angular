@@ -1,0 +1,31 @@
+<!-- loading -->
+<div class="loading" data-ng-hide="loading"></div>
+<!-- /loading -->
+
+<!-- ajaxLoading -->
+<div class="ajaxLoading" data-ng-show="ajaxLoading"></div>
+<!-- /ajaxLoading -->
+
+<!-- 头部 -->
+<header data-ng-show="app.isHeader" data-ui-view="header" data-ng-controller="headerCtrl"></header>
+<!-- /头部 -->
+
+<div class="clearfix">
+    
+    <!-- 侧边栏 -->
+    <!--<div class="sidebar" data-ng-show="app.isSidebar" data-ui-view="sidebar" data-ng-controller="sidebarCtrl"></div>-->
+    <!-- /侧边栏 -->
+    
+    <!-- 主要内容 -->
+    <div class="main" data-ng-show="app.isMain" data-ui-view="main"></div>
+    <!-- /主要内容 -->
+
+</div>
+
+<!-- 底部 -->
+<div class="footer" data-ng-show="app.isFooter" data-ui-view="footer" data-ng-controller="footerCtrl"></div>
+<!-- /底部 -->
+
+<!-- 弹出框插件 -->
+<div data-popup-container></div>
+<!-- /弹出框插件 -->

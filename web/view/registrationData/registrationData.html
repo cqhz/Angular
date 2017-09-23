@@ -1,0 +1,78 @@
+<div class="registrationData" data-ng-controller="registrationData">
+    <div class="wrapcont">
+				<div class="clearfix">
+					<div class="navBar navBar2 pull-left">	
+						<h2 class="icon2"></h2>
+						<p>注册数据 <span>Registration data</span></p>
+					</div>
+					<div class="pull-right tableRight color1">
+						<div class="tableHeader">
+							<form class="formList clearfix">
+								<div class="pull-left">
+									<p>
+										<select name="years">
+											<option value="">2014年</option>
+											<option value="">2015年</option>
+											<option value="">2016年</option>
+										</select>
+									</p>
+									<p>
+										<select name="month">
+											<option value="">全部</option>
+											<option value="">1月</option>
+											<option value="">2月</option>
+											<option value="">3月</option>
+											<option value="">4月</option>
+											<option value="">5月</option>
+											<option value="">6月</option>
+											<option value="">7月</option>
+											<option value="">8月</option>
+											<option value="">9月</option>
+											<option value="">10月</option>
+											<option value="">11月</option>
+											<option value="">12月</option>
+										</select>
+									</p>
+									<button class="btn">查询</button>
+								</div>
+								<div class="pull-right">
+									<a href="#/setPlatformpageP" class="xsbtn btn">申请结算</a>
+								</div>
+							</form>
+						</div>
+						<div class="tableList">
+							<table>
+								<thead>
+									<tr>
+								        <th>日期</th>
+								        <th>注册数</th>
+								        <th>注册收益</th>
+								    </tr>
+							    </thead>
+							   <tbody>
+								    <tr ng-repeat="x in names">
+								        <td>{{x.time}}</td>
+								        <td>{{x.number}}</td>
+								        <td>{{x.income}}</td>
+								    </tr>
+								    <!--<tr ng-repeat="emp in persons">
+						                <td>{{emp.ID}}</td>
+						                <td>{{emp.FirstName}}</td>
+						                <td>{{emp.LastName}}</td>
+						                <td>{{emp.Status}}</td>
+						                <td>{{emp.Address}}</td>
+						            </tr>-->
+								    <tr>
+								        <td class="gather">按当月汇总</td>
+								        <td>{{countNumber}}</td>
+								        <td>{{countIncome}}</td>
+					    			</tr>
+								</tbody>
+							</table>
+							
+						</div>
+						<!--<tm-pagination class="clearfix" conf="paginationConf"></tm-pagination>-->
+					</div>
+				</div>
+			</div>
+</div>

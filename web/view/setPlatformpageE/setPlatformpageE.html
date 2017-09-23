@@ -1,0 +1,173 @@
+<div class="gameIncome" data-ng-controller="setPlatformpageECtrl">
+	<div class="wrapcont">
+		<div class="clearfix">
+			<div class="navBar navBar7 pull-left">	
+				<h2 class="icon7"></h2>
+				<p>游戏收益 <span>Game income</span></p>
+			</div>
+			<div class="pull-right tableRight color1">
+				<div class="tableHeader">
+					<form class="formList">
+						<p>
+							<input type="text" name="year" class="Wdate selectTime" id="year" ng-value="yeardate" ng-model="yeardate1" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy'})"})" />					
+						</p>
+						<p>
+							<input type="text" name="month" class="Wdate selectTime" id="month" ng-model="monthdate" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'MM'})" />
+						</p>
+						<p>
+							<select>
+								<option value="">结算状态</option>
+								<option value="">未结算</option>
+								<option value="">已结算</option>
+							</select>
+						</p>
+						<button type="button" class="xsbtn btn ml5">查询</button>
+						<button type="button" class="xsbtn btn ml5p" ng-show="isShow" ng-click="moreS()">批量结算</button>
+					</form>
+				</div>
+				<div class="tableList">
+					<table>
+						<tr>
+					        <th>选择</th>
+					        <th>日期</th>
+					        <th>充值总额（元）</th>
+					        <th>充值收益（元）</th>
+					        <th>结算状态</th>
+					        <th>结算方式</th>
+					        <th>操作</th>
+					    </tr>
+					    <tr ng-repeat="x in names">
+					    	<td ng-if="x.setstatus == 1||x.setstatus == 2"></td>
+					    	<td ng-if="x.setstatus == -1"><input type="checkbox" ng-checked="master" ng-model="bandleChecked" ng-click="changeBandleCheck(x,bandleChecked)"/></td>
+					        <td>{{x.time}}</td>
+					        <td>{{x.totalrec}}</td>
+					        <td>{{x.recrenue}}</td>
+					        <td ng-if="x.setstatus == -1">未申请</td>
+					        <td ng-if="x.setstatus == 2">已申请</td>
+					        <td ng-if="x.setstatus == 1">已结算</td>
+					        <td ng-if="x.setstatus == -1"></td>
+					        <td ng-if="x.setstatus == 1||x.setstatus == 2">现金转账</td>
+					        <td class="onlyoperate">
+					        	<a href="javascript:;" ng-click="setAccounts(x)" ng-if="x.setstatus == -1">结算</a>
+					        	<a href="javascript:;" ng-click="viewDetails(x)" ng-if="x.setstatus == 1||x.setstatus == 2">查看</a>
+					        </td>
+					    </tr>
+					    <tr>
+					    	<td><input type="checkbox" ng-click="allChecked(master,names);" ng-model="master"/>全选</td>
+					    	<td>汇总</td>
+					    	<td>{{income}}</td>
+					    	<td>{{income}}</td>
+					    	<td></td>
+					    	<td></td>
+					    	<td></td>
+					    </tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--点击查看弹框-->
+	<div class="wrapcont udmodel" ng-show="viewdisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 setmodel" id="popup">
+			<div class="modeltl">
+				<p>查看</p>
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable viewTable" name="formBalance">
+					<table>
+						<tr>
+							<th class="bold">平台结算清单</th>
+							<td>
+								
+							</td>
+						</tr>
+						<tr>
+							<th>结算单号：</th>
+							<td>
+								<span ng-if="state==1">{{1111111111111111}}</span>
+								<span class="red" ng-if="state==2">未返回</span>
+							</td>
+						</tr>
+						<tr>
+							<th>对公客户：</th>
+							<td>
+								<span>{{1111}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th>结算日期：</th>
+							<td>{{totaydata}}</td>
+						</tr>
+						<tr>
+							<th>联系方式：</th>
+							<td>{{13811111111}}</td>
+						</tr>
+						<tr>
+							<th>结算方式：</th>
+							<td>现金结算</td>
+						</tr>
+						<tr>
+							<th class="bold">结算明细</th>
+							<td></td>
+						</tr>
+					</table>
+				</form>
+				<div class="tableList viewTableList">
+					<table>
+						<thead>
+							<tr>
+						        <th class="time">日期</th>
+						        <th>总收益</th>
+						        <th>合计结算金额</th>
+						       	<th>单位</th>
+					    	</tr>
+						</thead>
+					    <tbody>
+					    	 <tr>
+						        <td>{{totaydata}}</td>
+						        <td>{{2222}}</td>
+						        <td>{{3333}}</td>
+						        <td>{{55555}}</td>
+							</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--点击查看弹框-->
+	<!--点击结算弹框-->
+	<div class="wrapcont udmodel" ng-show="display">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 setmodel" id="popup">
+			<div class="modeltl">
+				<p>结算</p>
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable setTable" name="formBalance">
+					<table>
+						<tr>
+							<th>当前所选日期：</th>
+							<td class="wd-400">
+								<span>{{batch}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th>当前选择总收益：</th>
+							<td>
+								<span>{{4200}}元</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="paddinglr0" colspan="2">将结算到您设置的结算账户：xx银行 622622622622622622622银行卡号</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="setConf()">确认结算</button>
+		</div>
+	</div>
+</div>

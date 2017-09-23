@@ -1,0 +1,94 @@
+{
+"records": [
+		{
+		"gamename": "天龙八部",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部1",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部3",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部2",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部4",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		},
+		{
+		"gamename": "天龙八部5",
+		"activation": 500,
+		"registrate": 10000,
+		"cost":100000
+		}
+	]
+}

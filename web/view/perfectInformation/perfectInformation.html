@@ -1,0 +1,89 @@
+<div class="perfectInformation" data-ng-controller="perfectInformationCtrl">
+	<!-- 完善资料 -->
+	<div class="data-main">
+		<h2 class="main-tit">尊敬的渠道伙伴，请完善以下资料</h2>
+		<div class="formbox">
+			<form class="data-form" name="form">
+				<div class="formcon clearfix">
+					<div class="form-tit">合作类型</div>
+					<div class="form-input-box">
+						<label class="form-radio"><input type="radio" name="kinds" class="radio-kinds" ng-checked="formChecked1" ng-click="formChecked1 = true;formChecked2 = false;checkedState = 1" /><span class="radio-simulate"></span>个人</label>
+						<label class="form-radio"><input type="radio" name="kinds" class="radio-kinds" ng-checked="formChecked2" ng-click="formChecked1 = false;formChecked2 = true;checkedState = 2" /><span class="radio-simulate"></span>企业</label>
+					</div>
+				</div>
+				<div class="formcon clearfix">
+					<div class="form-tit form-tit-lh">真实姓名</div>
+					<div class="form-input-box">
+						<input type="text" class="form-input input-name" required name="realName" ng-class="{error:form.realName.$error.pattern && realNameBlur}" pattern="^[\u4e00-\u9fa5]{2,10}$" ng-focus="realNameBlur=false" ng-blur="realNameBlur=true" ng-model="realName" />
+					</div>
+					<div class="form-tips">*请真实填写，否则无法提现</div>
+				</div>
+				<div class="formcon clearfix" ng-show="formChecked2">
+					<div class="form-tit form-tit-lh">企业名称</div>
+					<div class="form-input-box">
+						<input type="text" class="form-input" maxlength="30" required name="enterprise" ng-class="{error:form.enterprise.$error.pattern && enterpriseBlur}" pattern="^([A-Za-z]|[\u4e00-\u9fa5]|[.])+$" ng-focus="enterpriseBlur=false" ng-blur="enterpriseBlur=true" ng-model="enterprise" />
+					</div>
+				</div>
+				<div class="formcon clearfix">
+					<div class="form-tit">手 机 号</div>
+					<div class="form-input-box" ng-bind="phoneNum">1854545641</div>
+				</div>
+				<div class="formcon clearfix">
+					<div class="form-tit form-tit-lh">验 证 码</div>
+					<div class="form-input-box clearfix">
+						<input type="text" class="form-input input-code pull-left" required name="verification" ng-class="{error:form.verification.$error.pattern && verificationBlur}" pattern="^\d{4}$|^\d{6}$" ng-focus="verificationBlur=false" ng-blur="verificationBlur=true" ng-model="verification" />
+						<button type="button" class="form-btn-code pull-left" ng-click="getCode()" ng-bind="verificationButton" ng-disabled="codeing"></button>
+					</div>
+				</div>
+				<div class="formcon clearfix">
+					<div class="form-tit">证 件 照</div>
+					<div class="form-input-box">
+						<div class="form-file-ID clearfix">
+							<label class="form-file-label">
+								<div class="input-file-box">
+									<input type="file" name="" class="input-file" ng-model="filePic1"/>
+									<span class="input-file-words" ng-click="upload()">上传</span>
+								</div>
+								<div class="input-file-preview"><img ng-src="{{image_source1}}" class="file-preview-img" /></div>
+							</label>
+							<label class="form-file-label">
+								<div class="input-file-box">
+									<input type="file" name="" class="input-file" />
+									<span class="input-file-words" ng-click="upload()">上传</span>
+								</div>
+								<div class="input-file-preview"><img ng-src="{{image_source2}}" class="file-preview-img" /></div>
+							</label>
+							<p class="form-file-tips">
+								*分别需要上传申请人手持身份证正面的上半身照，<br />以及手持身份证反面的上半身照，请保证身份证信息清晰可见
+							</p>
+						</div>
+						<div class="form-file-enterprise clearfix" ng-show="formChecked2">
+							<label class="form-file-label">
+								<div class="input-file-box">
+									<input type="file" name="" class="input-file" />
+									<span class="input-file-words" ng-click="upload()">上传</span>
+								</div>
+								<div class="input-file-preview"><img ng-src="{{image_source3}}" class="file-preview-img" /></div>
+							</label>
+							<label class="form-file-label">
+								<div class="input-file-box">
+									<input type="file" name="" class="input-file" />
+									<span class="input-file-words" ng-click="upload()">上传</span>
+								</div>
+								<div class="input-file-preview"><img ng-src="{{image_source4}}" class="file-preview-img" /></div>
+							</label>
+							<p class="form-file-tips form-file-tips2">
+								*企业用户请上传法人授权函高清照，以及企业执照正面照，请确保信息清晰可见
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="formcon clearfix">
+					<button type="button" class="form-submit" ng-click="goSubmit()" ng-disabled="!(form.realName.$valid && form.verification.$valid && (((checkedState==2) && form.enterprise.$valid) || !(checkedState==2)))">提　交</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- /完善资料 -->
+</div>

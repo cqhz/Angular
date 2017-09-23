@@ -1,0 +1,143 @@
+<div class="totalData" data-ng-controller="totalData">
+    <div class="wrapcont">
+				<div class="clearfix">
+					<div class="navBar navBar9 pull-left">	
+						<h2 class="icon9"></h2>
+						<p>游戏数据 <span>totalData</span></p>
+					</div>
+					<div class="pull-right tableRight color1">
+						<div class="totalmargin">
+							<div class="tableHeader">
+								<form class="formList">
+									<p class="fz-16">
+										<label>数据汇总：</label>
+									    <span>{{totaydata}}</span>
+									<p>
+								</form>
+							</div>
+							<div class="tableList tableListview">
+								<table>
+									<thead>
+										<tr>
+									        <th><p>游戏总数</p>{{gameNum}}</th>
+									        <th><p>激活总数</p>{{activaNum}}</th>
+									        <th><p>注册总数</p>{{regisNum}}</th>
+									        <th><p>付费总数（元）</p>{{momeyNum}}</th>
+									    </tr>
+								    </thead>
+								    
+								</table>
+								
+							</div>
+						</div>
+						<div class="totalmargin">
+							<div class="tableHeader">
+								<form class="formList">
+									<p class="fz-16">
+										<label>数据对比：</label>
+									    <input type="text" name="year" class="Wdate selectTime" id="year" ng-value="yesterday" ng-model="yeardate1" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd'})"})" />
+										<button type="button" class="btn ml20">查询</button>
+									<p>
+								</form>
+							</div>
+							<div class="tableList tableListview">
+								<table>
+									<thead>
+										<tr>
+									        <th><p>游戏总数</p>{{gameNum}}</th>
+									        <th><p>激活总数</p>{{activaNum}}</th>
+									        <th><p>注册总数</p>{{regisNum}}</th>
+									        <th><p>付费总数（元）</p>{{momeyNum}}</th>
+									    </tr>
+								    </thead>
+								    
+								</table>
+								
+							</div>
+						</div>
+						<div class="totalmargin">
+							<div class="tableHeader">
+								<form class="formList">
+									<p class="fz-16">游戏详情<p>
+								</form>
+							</div>
+							<div class="tableList Detailstable">
+								<table>
+									<thead>
+										<tr>
+									        <th>游戏名称</th>
+									        <th>激活</th>
+									        <th>注册</th>
+									        <th>付费</th>
+									        <th>操作</th>
+								    	</tr>
+									</thead>
+								    <tbody>
+								    	<tr ng-repeat="x in names">
+									        <td>{{x.gamename}}</td>
+									        <td>{{x.activation}}</td>
+									        <td>{{x.registrate}}</td>
+									        <td>{{x.cost}}</td>
+									        <td ng-click="viewDatamodel()"><a class="bule" href="javascript:;">查看数据</a></td>
+								    	</tr>
+								    </tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!--数据详情弹框-->
+		<div class="viewData udmodel color1" ng-show="display">
+			<div class="modelbg" ng-click="hide()"></div>
+			<div class="udmodelct tableview" id="popupview">
+				<div class="modeltl">
+						<p>天龙八部</p>
+						<i ng-click="hide()"></i>
+				</div>
+				<div class="modelby">
+					<div class="tableHeader tableheardview">
+						
+						<form class="formList">
+							<p class="fz-16">
+								<label>日期查询：</label>
+							    <input type="text" name="year" class="Wdate selectTime" id="year" ng-value="choose" ng-model="yeardate1" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd'})"})" />
+								<button type="button" class="btn ml20">查询</button>
+							<p>
+						</form>
+					</div>
+					<div class="tableList modeltable">
+						<table>
+							<thead>
+								<tr>
+							        <th>日期</th>
+							        <th>活跃</th>
+							        <th>新增激活</th>
+							        <th>新增注册</th>
+							        <th>新增设备</th>
+							        <th>新增付费用户</th>
+							        <th>新增用户付费</th>
+							        <th>付费用户</th>
+							        <th>付费总额</th>
+						    	</tr>
+							</thead>
+						    <tbody>
+						    	<tr ng-repeat="x in viewname">
+							        <td>{{x.time}}</td>
+							        <td>{{x.active}}</td>
+							        <td>{{x.addactive}}</td>
+							        <td>{{x.addregi}}</td>
+							        <td>{{x.adddevice}}</td>
+							        <td>{{x.addmouser}}</td>
+							        <td>{{x.addusermo}}</td>
+							        <td>{{x.mouser}}</td>
+							        <td>{{x.totalmo}}</td>
+						    	</tr>
+						    </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+</div>

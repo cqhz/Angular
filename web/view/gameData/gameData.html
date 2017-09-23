@@ -1,0 +1,195 @@
+<div class="gameData" data-ng-controller="gameDataCtrl">
+	<div class="wrapcont">
+		<div class="clearfix">
+			<div class="navBar navBar4 pull-left">	
+				<h2 class="icon4"></h2>
+				<p>游戏数据 <span>Game data</span></p>
+			</div>
+			<div class="pull-right tableRight color1">
+				<div class="gamedataCon" ng-init="tab='one'">
+					<button type="button" ng-click="tab='one'" ng-class="tab==='one'?'graybtn btn':'graybtn'">每日数据</button>
+					<button type="button" ng-click="tab='two'" ng-class="tab==='two'?'graybtn btn':'graybtn'">游戏查询</button>
+				</div>
+				<div class="fz-16">
+					<div ng-show="tab==='one'">
+						<div class="tableHeader">
+							<form class="formList">
+								<p>
+									<input type="text" name="year" class="Wdate selectTime" id="year" ng-value="tenday" ng-model="tenday" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd'})"})" />
+									<span>--</span>
+									<input type="text" name="month" class="Wdate selectTime" id="month" ng-value="totaydata" ng-model="totaydata" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd'})" />
+								</p>
+								<p>
+									<button type="button" class="btn">查询</button>
+								</p>
+								<button type="button" class="xsbtn btn">导出</button>
+							</form>
+						</div>
+						<div class="tableList gametableList">
+							<table>
+								<tr>
+							        <th class="time">日期</th>
+							        <th>活跃（位）</th>
+							        <th>新增注册（位）</th>
+							       	<th>新增设备（位）</th>
+							       	<th>新增充值用户（位）</th>
+							       	<th>新增用户充值（位）</th>
+							       	<th>充值用户数（位）</th>
+							       	<th>付费总额（元）</th>
+							       	<th>收益（元）</th>
+							       	<th class="gamedetail">查看明细</th>
+							    </tr>
+							    <tr ng-repeat="x in names">
+							        <td>{{x.time}}</td>
+							        <td>{{x.activenum}}</td>
+							        <td>{{x.addregist}}</td>
+							        <td>{{x.adddevice}}</td>
+							        <td>{{x.addrecuser}}</td>
+							        <td>{{x.adduserrec}}</td>
+							        <td>{{x.addusers}}</td>
+							        <td>{{x.totalpaid}}</td>
+							        <td>{{x.income}}</td>
+							        <td ng-click="gameDatamodel()"><a class="bule" href="javascript:;">游戏详情</a></td>
+							    </tr>
+							    <tr>
+							        <td class="gather">总计</td>
+							        <td></td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td></td>
+							    </tr>
+							</table>
+						</div>
+					</div>
+					<div ng-show="tab==='two'">
+						<div class="tableHeader">
+							<form class="formList">
+								<p>
+									<input type="text" name="year" class="Wdate selectTime" id="year" ng-value="tenday" ng-model="tenday" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd'})"})" />
+									<span>--</span>
+									<input type="text" name="month" class="Wdate selectTime" id="month" ng-value="totaydata" ng-model="totaydata" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd'})" />
+								</p>
+								<p><input class="forminput" type="text" placeholder="天龙八部"/></p>
+								<p>
+									<button type="button" class="btn">查询</button>
+								</p>
+								<button type="button" class="xsbtn btn">导出</button>
+							</form>
+						</div>
+						<div class="tableList gametableList gameinquTable">
+							<table>
+								<tr>
+							        <th class="time">日期</th>
+							        <th class="gamedetail">游戏名称</th>
+							        <th>活跃（位）</th>
+							        <th>新增注册（位）</th>
+							       	<th>新增设备（位）</th>
+							       	<th>新增充值用户（位）</th>
+							       	<th>新增用户充值（位）</th>
+							       	<th>充值用户数（位）</th>
+							       	<th>付费总额（元）</th>
+							       	<th>收益（元）</th>
+							    </tr>
+							    <tr ng-repeat="x in names">
+							        <td>{{x.time}}</td>
+							        <td>{{x.gamename}}</td>
+							        <td>{{x.activenum}}</td>
+							        <td>{{x.addregist}}</td>
+							        <td>{{x.adddevice}}</td>
+							        <td>{{x.addrecuser}}</td>
+							        <td>{{x.adduserrec}}</td>
+							        <td>{{x.addusers}}</td>
+							        <td>{{x.totalpaid}}</td>
+							        <td>{{x.income}}</td>
+							    </tr>
+							    <tr>
+							        <td class="gather">总计</td>
+							        <td></td>
+							        <td></td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							        <td>{{useracsnumber}}</td>
+							    </tr>
+							</table>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--游戏详情弹框-->
+	<div class="viewData udmodel color1" ng-show="display">
+		<div class="modelbg" ng-click="hide()"></div>
+		<div class="udmodelct tableview" id="popupview">
+			<div class="modeltl">
+					<p>游戏详情</p>
+					<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby">
+				<div class="tableHeader tableheardview">
+					
+					<form class="formList">
+						<p><input class="forminput" type="text" placeholder="天龙八部"/></p>
+						<p>
+							<button type="button" class="btn">查询</button>
+						</p>
+						<button type="button" class="xsbtn btn">导出</button>
+					</form>
+				</div>
+				<div class="tableList modeltable gametableList gamemodeltable">
+					<table>
+						<thead>
+							<tr>
+						        <th class="time">日期</th>
+						        <th class="gamedetail">游戏名称</th>
+						        <th>活跃（位）</th>
+						        <th>新增注册（位）</th>
+						       	<th>新增设备（位）</th>
+						       	<th>新增充值用户（位）</th>
+						       	<th>新增用户充值（位）</th>
+						       	<th>充值用户数（位）</th>
+						       	<th>付费总额（元）</th>
+						       	<th>收益（元）</th>
+					    	</tr>
+						</thead>
+					    <tbody>
+					    	 <tr ng-repeat="x in names">
+						        <td>{{x.time}}</td>
+						        <td>{{x.gamename}}</td>
+						        <td>{{x.activenum}}</td>
+						        <td>{{x.addregist}}</td>
+						        <td>{{x.adddevice}}</td>
+						        <td>{{x.addrecuser}}</td>
+						        <td>{{x.adduserrec}}</td>
+						        <td>{{x.addusers}}</td>
+						        <td>{{x.totalpaid}}</td>
+						        <td>{{x.income}}</td>
+							</tr>
+						    <tr>
+						        <td class="gather">总计</td>
+						        <td></td>
+						        <td></td>
+						        <td>{{useracsnumber}}</td>
+						        <td>{{useracsnumber}}</td>
+						        <td>{{useracsnumber}}</td>
+						        <td>{{useracsnumber}}</td>
+						        <td>{{useracsnumber}}</td>
+						        <td>{{useracsnumber}}</td>
+						        <td>{{useracsnumber}}</td>
+						    </tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

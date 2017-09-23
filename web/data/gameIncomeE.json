@@ -1,0 +1,63 @@
+{
+"code":"000",
+"data":[{
+		"time": "2016-08-04",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":-1
+		},
+		{
+		"time": "2016-08-05",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":1
+		},
+		{
+		"time": "2016-08-06",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":2
+		},
+		{
+		"time": "2016-08-07",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":-1
+		},
+		{
+		"time": "2016-08-08",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":1
+		},
+		{
+		"time": "2016-08-09",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":2
+		},
+		{
+		"time": "2016-08-13",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":-1
+		},
+		{
+		"time": "2016-08-15",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":-1
+		},
+		{
+		"time": "2016-08-25",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":-1
+		},
+		{
+		"time": "2016-08-24",
+		"totalrec": 8888,
+		"recrenue":100,
+		"setstatus":-1
+		}]
+}

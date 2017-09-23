@@ -1,0 +1,81 @@
+{
+"records": [
+		{
+		"time": "2016-08-07",
+		"number": "104",
+		"keepnum": "28%",
+		"threenum":"10%",
+		"sevennum":"7%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":400
+		},
+		{
+		"time": "2016-08-02",
+		"number": "104",
+		"keepnum": "28%",
+		"threenum":"60%",
+		"sevennum":"7%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":555
+		},
+		{
+		"time": "2016-08-01",
+		"number": "101",
+		"keepnum": "28%",
+		"threenum":"50%",
+		"sevennum":"27%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":666
+		},
+		{
+		"time": "2016-08-06",
+		"number": "104",
+		"keepnum": "28%",
+		"threenum":"10%",
+		"sevennum":"17%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":777
+		},
+		{
+		"time": "2016-08-25",
+		"number": "104",
+		"keepnum": "28%",
+		"threenum":"10%",
+		"sevennum":"4%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":888
+		},
+		{
+		"time": "2016-08-15",
+		"number": "104",
+		"keepnum": "28%",
+		"threenum":"10%",
+		"sevennum":"9%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":8999
+		},
+		{
+		"time": "2016-08-13",
+		"number": "104",
+		"keepnum": "28%",
+		"threenum":"10%",
+		"sevennum":"8%",
+		"addnummo":"20",
+		"addmoney":"1000",
+		"nummo":"12",
+		"overallnum":764
+		}
+	]
+}

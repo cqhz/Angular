@@ -1,0 +1,229 @@
+<div class="gameIncome" data-ng-controller="setPlatformpagePCtrl">
+	<div class="wrapcont">
+		<div class="clearfix">
+			<div class="navBar navBar7 pull-left">	
+				<h2 class="icon7"></h2>
+				<p>游戏收益 <span>Game income</span></p>
+			</div>
+			<div class="pull-right tableRight color1">
+				<div class="tableHeader">
+					<form class="formList">
+						<p>
+							<input type="text" name="year" class="Wdate selectTime" id="year" ng-value="yeardate" ng-model="yeardate1" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'yyyy'})"})" />					
+						</p>
+						<p>
+							<input type="text" name="month" class="Wdate selectTime" id="month" ng-model="monthdate" onChange="" onfocus="WdatePicker({skin:'twoer',dateFmt:'MM'})" />
+						</p>
+						<p>
+							<select>
+								<option value="">结算状态</option>
+								<option value="">未结算</option>
+								<option value="">已结算</option>
+							</select>
+						</p>
+						<p>
+							<select>
+								<option value="">结算方式</option>
+								<option value="">喵点</option>
+								<option value="">微信现金</option>
+							</select>
+						</p>
+						<button type="button" class="xsbtn btn ml5">查询</button>
+						<button type="button" class="xsbtn btn ml5p" ng-show="isShow" ng-click="moreS()">批量结算</button>
+					</form>
+				</div>
+				<div class="tableList">
+					<table>
+						<tr>
+					        <th>选择</th>
+					        <th>日期</th>
+					        <th>充值总额（元）</th>
+					        <th>充值收益（元）</th>
+					        <th>结算状态</th>
+					        <th>结算方式</th>
+					        <th>操作</th>
+					    </tr>
+					    <tr ng-repeat="x in names">
+					    	<td ng-if="x.setstatus == 1"></td>
+					    	<td ng-if="x.setstatus == -1"><input type="checkbox" ng-checked="master" ng-model="bandleChecked" ng-click="changeBandleCheck(x,bandleChecked)"/></td>
+					        <td>{{x.time}}</td>
+					        <td>{{x.totalrec}}</td>
+					        <td>{{x.recrenue}}</td>
+					        <td ng-if="x.setstatus == -1">未结算</td>
+					        <td ng-if="x.setstatus == 1">已结算</td>
+					        <td ng-if="x.setstatus == -1"></td>
+					        <td ng-if="x.setstatus == 1">
+					        	<a href="javascript:;" ng-if="x.setway == 2">喵点</a>
+					            <a href="javascript:;" ng-if="x.setway == -2">微信现金</a>
+					        </td>
+					        <td class="onlyoperate">
+					        	<a href="javascript:;" ng-click="setAccounts(x)" ng-if="x.setstatus == -1">结算</a>
+					        	<a href="javascript:;" ng-click="viewDetails(x)" ng-if="x.setstatus == 1">查看</a>
+					        </td>
+					    </tr>
+					    <tr>
+					    	<td><input type="checkbox" ng-click="allChecked(master,names);" ng-model="master"/>全选</td>
+					    	<td>汇总</td>
+					    	<td>{{income}}</td>
+					    	<td>{{income}}</td>
+					    	<td></td>
+					    	<td></td>
+					    	<td></td>
+					    </tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--点击查看弹框-->
+	<div class="wrapcont udmodel" ng-show="viewdisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 setmodel" id="popup">
+			<div class="modeltl">
+				<p>查看</p>
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable viewTable" name="formBalance">
+					<table>
+						<tr>
+							<th class="bold">平台结算清单</th>
+							<td>
+								
+							</td>
+						</tr>
+						<tr>
+							<th>结算单号：</th>
+							<td>
+								<span>{{1111111111111111}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th>个人客户：</th>
+							<td>
+								<span>{{1111}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th>结算日期：</th>
+							<td>{{totaydata}}</td>
+						</tr>
+						<tr>
+							<th>联系方式：</th>
+							<td>{{13811111111}}</td>
+						</tr>
+						<tr>
+							<th>结算方式：</th>
+							<td ng-if="setways==-2">现金结算</td>
+							<td ng-if="setways==2">喵点结算</td>
+						</tr>
+						<tr>
+							<th class="bold">结算明细</th>
+							<td></td>
+						</tr>
+					</table>
+				</form>
+				<div class="tableList viewTableList">
+					<table>
+						<thead>
+							<tr>
+						        <th class="time">日期</th>
+						        <th>总收益</th>
+						        <th ng-if="setways==-2">手续费=（-）*5%</th>
+						        <th ng-if="setways==-2">合计结算金额</th>
+						       	<th>单位</th>
+					    	</tr>
+						</thead>
+					    <tbody>
+					    	 <tr>
+						        <td>{{1111}}</td>
+						        <td>{{2222}}</td>
+						        <td ng-if="setways==-2">{{3333}}</td>
+						        <td ng-if="setways==-2">{{444}}</td>
+						        <td ng-if="setways==-2">元</td>
+						        <td ng-if="setways==2">喵点</td>
+							</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--点击查看弹框-->
+	<!--点击结算弹框-->
+	<div class="wrapcont udmodel" ng-show="display">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 setmodel" id="popup">
+			<div class="modeltl">
+				<p>结算</p>
+				<i ng-click="hide()"></i>
+			</div>
+			<div class="modelby fz-16">
+				<form class="formTable setTable" name="formBalance">
+					<table>
+						<tr>
+							<th>当前所选日期：</th>
+							<td class="wd-400">
+								<span>{{batch}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th>当前选择总收益：</th>
+							<td>
+								<span>{{4200}}元</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="paddinglr0" colspan="2">您将得到42000喵点 或者 4200*0.95（5%手续费）元现金</td>
+						</tr>
+						<tr>
+							<th>结算方式：</th>
+							<td>
+								<input type="radio" name="set"  ng-model="selectState" value="true"/><span>喵点结算</span>
+								<input type="radio" name="set" ng-model="selectState" value="false" class="ml20"/><span>现金结算</span>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="setConf()">确认结算</button>
+		</div>
+	</div>
+	<!--点击结算弹框-->
+	<!--点击确认结算到微信-->
+	<div class="wrapcont udmodel" ng-show="setdisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 conmodel">
+			<div class="modelby fz-16">
+				<p>
+					确认结算成功，可在微信公众号“游戏猫GameCat”发起转账申请，1-3个工作日将以微信转账形式发放到您的微信钱包中。
+				</p>
+				<p>
+					请务必关注微信公众号！
+				</p>
+				<div>
+					<img src="img/gamecode.jpg" width="150" height="150"/>
+				</div>
+				<p>微信公众号"游戏猫GameCat"</p>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="confirm()">确认</button>
+		</div>
+	</div>
+	<!--点击确认结算到微信-->
+	<!--点击确认结算到喵点-->
+	<div class="wrapcont udmodel" ng-show="miaodisplay">
+		<div class="modelbg"></div>
+		<div class="clearfix con udmodelct color1 miaomodel">
+			<div class="modelby fz-16">
+				<p>
+					结算成功
+				</p>
+				<p>
+					结算1,000元至喵点余额，新增10,000喵点，可以登录APP查看
+				</p>
+			</div>
+			<button class="confirmbtn btn mp-30" ng-click="miaofirm()">确认</button>
+		</div>
+	</div>
+	<!--点击确认结算到喵点-->
+</div>
